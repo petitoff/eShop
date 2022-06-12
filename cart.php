@@ -49,7 +49,7 @@ require_once('php/header.php');
     <div class="row px-5">
         <div class="col-md-7">
             <div class="shopping-cart">
-                <h6>My Cart</h6>
+                <h6>Twój koszyk</h6>
                 <hr>
 
                 <?php
