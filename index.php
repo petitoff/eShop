@@ -79,7 +79,7 @@ if (isset($_POST['add'])) {
           <?php
               $result = $database->getData();
               while ($row = mysqli_fetch_assoc($result)){
-                  component($row['product_name'], $row['product_price'], $row['product_image'], $row['id']);
+                  component($row['product_name'], $row['product_price'], $row['product_before_price'], $row['product_image'], $row['id'], $row['product_evaluation']);
               }
           ?>
       </div>
