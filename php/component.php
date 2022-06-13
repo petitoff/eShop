@@ -1,5 +1,52 @@
 <?php
-    function component($productname, $productprice, $productimg, $productid){
+    function component($productname, $productprice, $productBeforePrice, $productimg, $productid, $product_evaluation){
+        if($productBeforePrice != 0){
+            $napis1 = "<small><s class=\"text-secondary\">$productBeforePrice zł</s></small>";
+        } else{
+            $napis1 = "";
+        }
+
+        switch ($product_evaluation){
+            case 1:
+                $star = "<i class=\"fas fa-star\"></i>
+                        <i class=\"far fa-star\"></i>
+                        <i class=\"far fa-star\"></i>
+                        <i class=\"far fa-star\"></i>
+                        <i class=\"far fa-star\"></i>";
+                break;
+            case 2:
+                $star = "<i class=\"fas fa-star\"></i>
+                         <i class=\"fas fa-star\"></i>
+                         <i class=\"far fa-star\"></i>
+                         <i class=\"far fa-star\"></i>
+                         <i class=\"far fa-star\"></i>";
+                break;
+            case 3:
+                $star = "<i class=\"fas fa-star\"></i>
+                        <i class=\"fas fa-star\"></i>
+                        <i class=\"fas fa-star\"></i>
+                        <i class=\"far fa-star\"></i>
+                        <i class=\"far fa-star\"></i>";
+            break;
+            case 4:
+                $star = "<i class=\"fas fa-star\"></i>
+                        <i class=\"fas fa-star\"></i>
+                        <i class=\"fas fa-star\"></i>
+                        <i class=\"fas fa-star\"></i>
+                        <i class=\"far fa-star\"></i>";
+            break;
+            case 5:
+                $star = "<i class=\"fas fa-star\"></i>
+                        <i class=\"fas fa-star\"></i>
+                        <i class=\"fas fa-star\"></i>
+                        <i class=\"fas fa-star\"></i>
+                        <i class=\"fas fa-star\"></i>";
+            break;
+            default:
+                $star = "Brak oceny produktu.";
+                break;
+        }
+
         $element = "
         <div class=\"col-md-3 col-sm-6 my-3 my-md-0\">
         <form action=\"index.php\" method=\"post\">
@@ -10,15 +57,11 @@
                 <div class=\"card-body\">
                     <h5 class=\"card-title\">$productname</h5>
                     <h6>
-                        <i class=\"fas fa-star\"></i>
-                        <i class=\"fas fa-star\"></i>
-                        <i class=\"fas fa-star\"></i>
-                        <i class=\"fas fa-star\"></i>
-                        <i class=\"far fa-star\"></i>
+                        $star
                     </h6>
 
                     <h5>
-                        <small><s class=\"text-secondary\">599 zł</s></small>
+                        $napis1
                         <span class=\"price\">$productprice zł</span>
                     </h5>
                     <button type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Dodaj do koszyka <i class=\"fas fa-shopping-cart\"></i></button>
@@ -45,15 +88,7 @@ function cartElement($productimg, $productname, $productprice, $productid)
                                 <h5 class=\"pt-2\">$productname</h5>
                                 
                                 <h5 class=\"pt-2\">$productprice zł</h5>
-                                <button type=\"submit\" class=\"btn btn-warning\">Zapisz na później</button>
                                 <button type=\"submit\" class=\"btn btn-danger mx-2\" name=\"remove\">Usuń z koszyka</button>
-                            </div>
-                            <div class=\"col-md-3 py-5\">
-                                <div>
-                                    <button type=\"button\" class=\"btn bg-light border rounded-circle\"><i class=\"fas fa-minus\"></i></button>
-                                    <input type=\"text\" value=\"1\" class=\"form-control w-25 d-inline\">
-                                    <button type=\"button\" class=\"btn bg-light border rounded-circle\"><i class=\"fas fa-plus\"></i></button>
-                                </div>
                             </div>
                         </div>
                     </div>
